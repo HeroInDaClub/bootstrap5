@@ -1,0 +1,978 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Документация Bootstrap 5</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="img/favicon.png">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    :root {
+      --bs-docs-purple: #7952b3;
+      --bs-docs-purple-dark: #6f42c1;
+      --docs-border: #e5e5e5;
+      --docs-muted: #6c757d;
+    }
+
+    body {
+      font-family: "Comfortaa", sans-serif;
+      color: #212529;
+      background: #fff;
+      font-size: 15px;
+    }
+
+    .bd-navbar {
+      min-height: 4rem;
+      background-color: var(--bs-docs-purple);
+      box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, .08), inset 0 -1px 0 rgba(0, 0, 0, .15);
+    }
+
+    .bd-navbar .navbar-brand,
+    .bd-navbar .nav-link {
+      color: rgba(255, 255, 255, .88);
+    }
+
+    .bd-navbar .navbar-brand:hover,
+    .bd-navbar .nav-link:hover,
+    .bd-navbar .nav-link.active {
+      color: #fff;
+    }
+
+    .bd-navbar .navbar-toggler {
+      border-color: rgba(255,255,255,.25);
+    }
+
+    .bd-navbar .navbar-toggler-icon {
+      filter: invert(1);
+    }
+
+    .brand-mark {
+      width: 38px;
+      height: 38px;
+      border-radius: .45rem;
+      background: #fff;
+      color: var(--bs-docs-purple);
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: .7rem;
+      font-size: 1.35rem;
+    }
+
+    .bd-subnavbar {
+      background: #fff;
+      border-bottom: 1px solid var(--docs-border);
+      box-shadow: 0 .25rem .75rem rgba(0,0,0,.035);
+    }
+
+    .bd-search {
+      max-width: 280px;
+    }
+
+    .bd-layout {
+      display: grid;
+      grid-template-columns: 250px minmax(0, 1fr) 230px;
+      gap: 2rem;
+      align-items: start;
+    }
+
+    .bd-sidebar {
+      position: sticky;
+      top: 5.5rem;
+      height: calc(100vh - 6rem);
+      overflow-y: auto;
+      padding-top: 1.5rem;
+    }
+
+    .bd-links-group {
+      margin-bottom: .35rem;
+    }
+
+    .bd-links-heading {
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+      width: 100%;
+      padding: .45rem .6rem;
+      font-weight: 600;
+      color: #444;
+      text-decoration: none;
+      border-radius: .35rem;
+      cursor: pointer;
+    }
+
+    .bd-links-heading:hover {
+      color: #000;
+      background: #f8f9fa;
+    }
+
+    .bd-links-heading::before {
+      content: "›";
+      font-size: 1.5rem;
+      line-height: 1;
+      color: #6c757d;
+    }
+
+    .bd-links-list {
+      list-style: none;
+      padding-left: 1.8rem;
+      margin: .15rem 0 .5rem;
+    }
+
+    .bd-links-list a {
+      display: block;
+      padding: .25rem 0;
+      font-size: .92rem;
+      color: #6c757d;
+      text-decoration: none;
+    }
+
+    .bd-links-list a:hover,
+    .bd-links-list a.active {
+      color: var(--bs-docs-purple);
+    }
+
+    .bd-intro {
+      padding-top: 2rem;
+    }
+
+    .bd-title {
+      font-size: calc(1.525rem + 3.3vw);
+      font-weight: 600;
+      line-height: 1;
+      margin-bottom: .8rem;
+    }
+
+    @media (min-width: 1200px) {
+      .bd-title {
+        font-size: 3rem;
+      }
+    }
+
+    .bd-lead {
+      font-size: 1.25rem;
+      font-weight: 300;
+      color: #495057;
+      max-width: 850px;
+      line-height: 1.55;
+    }
+
+    .bd-content {
+      min-width: 0;
+      padding-bottom: 3rem;
+    }
+
+    .bd-content h2 {
+      margin-top: 3rem;
+      margin-bottom: 1rem;
+      font-size: 2rem;
+      font-weight: 600;
+    }
+
+    .bd-content h3 {
+      margin-top: 2rem;
+      margin-bottom: .75rem;
+      font-size: 1.45rem;
+      font-weight: 600;
+    }
+
+    .bd-content p {
+      line-height: 1.65;
+    }
+
+    .bd-toc {
+      position: sticky;
+      top: 5.5rem;
+      padding-top: 2rem;
+      font-size: .875rem;
+      color: var(--docs-muted);
+    }
+
+    .bd-toc strong {
+      display: block;
+      padding-bottom: .7rem;
+      margin-bottom: .7rem;
+      border-bottom: 1px solid var(--docs-border);
+      color: #6c757d;
+    }
+
+    .bd-toc a {
+      display: block;
+      padding: .2rem 0;
+      color: #6c757d;
+      text-decoration: none;
+    }
+
+    .bd-toc a:hover {
+      color: var(--bs-docs-purple);
+    }
+
+    .highlight {
+      margin: 1rem 0 1.5rem;
+      background: #f8f9fa;
+      border-radius: .35rem;
+      border: 1px solid #f1f3f5;
+    }
+
+    pre {
+      margin: 0;
+      padding: 1rem;
+      overflow-x: auto;
+      font-size: .875rem;
+      line-height: 1.55;
+      color: #212529;
+    }
+
+    code {
+      color: #d63384;
+      font-size: .92em;
+    }
+
+    .bd-example {
+      padding: 1.5rem;
+      margin: 1rem 0 0;
+      border: 1px solid #dee2e6;
+      border-radius: .35rem .35rem 0 0;
+      background: #fff;
+    }
+
+    .bd-example + .highlight {
+      margin-top: 0;
+      border-top: 0;
+      border-radius: 0 0 .35rem .35rem;
+    }
+
+    .demo-img {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      border-radius: .5rem;
+    }
+
+    .masonry-css {
+      columns: 3;
+      column-gap: .75rem;
+    }
+
+    .masonry-css img {
+      width: 100%;
+      display: block;
+      margin-bottom: .75rem;
+      break-inside: avoid;
+      border-radius: .35rem;
+    }
+
+    .breadcrumb a {
+      color: #212529;
+      text-decoration: none;
+    }
+
+    .dropdown-item.active,
+    .dropdown-item:active,
+    .dropdown-item:focus {
+      background-color: var(--bs-docs-purple) !important;
+      color: #fff !important;
+    }
+
+    .nav-link.active,
+    .nav-link:focus,
+    .nav-link:active {
+      color: #fff !important;
+    }
+
+    .photo-hover img {
+      transition: .3s;
+    }
+
+    .photo-hover img:hover {
+      transform: scale(1.02);
+      filter: brightness(70%);
+    }
+
+    .bd-footer {
+      background: #f8f9fa;
+      border-top: 1px solid #e9ecef;
+      color: #6c757d;
+    }
+
+    @media (max-width: 1199.98px) {
+      .bd-layout {
+        grid-template-columns: 230px minmax(0, 1fr);
+      }
+
+      .bd-toc {
+        display: none;
+      }
+    }
+
+    @media (max-width: 767.98px) {
+      .bd-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .bd-sidebar {
+        position: static;
+        height: auto;
+        padding-top: .5rem;
+        border-bottom: 1px solid var(--docs-border);
+        padding-bottom: 1rem;
+      }
+
+      .bd-title {
+        font-size: 2.2rem;
+      }
+
+      .bd-lead {
+        font-size: 1.05rem;
+      }
+
+      .masonry-css {
+        columns: 1;
+      }
+    }
+
+    @media (min-width: 768px) and (max-width: 991.98px) {
+      .masonry-css {
+        columns: 2;
+      }
+    }
+  </style>
+</head>
+
+<body class="d-flex flex-column min-vh-100">
+
+<header class="navbar navbar-expand-md navbar-dark bd-navbar">
+  <nav class="container-xxl flex-wrap flex-md-nowrap" aria-label="Главная навигация">
+    <a class="navbar-brand d-flex align-items-center p-0 me-3" href="#content">
+      <span class="brand-mark">B</span>
+    </a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Открыть меню">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="mainNavbar">
+      <ul class="navbar-nav flex-row flex-wrap bd-navbar-nav me-auto">
+        <li class="nav-item"><a class="nav-link px-2 active" href="#content">Примеры</a></li>
+        <li class="nav-item"><a class="nav-link px-2" href="#navbar">Документация</a></li>
+        <li class="nav-item"><a class="nav-link px-2" href="#images">Иконки</a></li>
+        <li class="nav-item"><a class="nav-link px-2" href="#cards">Темы</a></li>
+        <li class="nav-item"><a class="nav-link px-2" href="#masonry">Экспо</a></li>
+        <li class="nav-item"><a class="nav-link px-2" href="#forms">Блог</a></li>
+        <li class="nav-item"><a class="nav-link px-2" href="#footer">Домены</a></li>
+      </ul>
+
+      <ul class="navbar-nav flex-row ms-md-auto d-none d-md-flex">
+        <li class="nav-item"><a class="nav-link px-2" href="#">●</a></li>
+        <li class="nav-item"><a class="nav-link px-2" href="#">●</a></li>
+        <li class="nav-item"><a class="nav-link px-2" href="#">●</a></li>
+      </ul>
+
+      <a class="btn btn-outline-warning ms-md-3" href="#start">Скачать</a>
+    </div>
+  </nav>
+</header>
+
+<nav class="bd-subnavbar py-2" aria-label="Дополнительная навигация">
+  <div class="container-xxl d-flex align-items-center flex-wrap gap-3">
+    <form class="bd-search position-relative">
+      <input class="form-control" type="search" placeholder="Поиск документации..." aria-label="Поиск документации">
+    </form>
+
+    <div class="dropdown ms-auto">
+      <button class="btn btn-light border dropdown-toggle" type="button" id="versionDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+        Bootstrap v5.0
+      </button>
+      <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="versionDropdown">
+        <li><a class="dropdown-item active" href="#">Текущая (5.0.x)</a></li>
+        <li><hr class="dropdown-divider"></li>
+        <li><a class="dropdown-item" href="#">v4.5.0</a></li>
+        <li><a class="dropdown-item" href="#">v3.4.1</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<main class="container-xxl my-4 flex-grow-1">
+  <div class="bd-layout">
+
+    <aside class="bd-sidebar">
+      <nav aria-label="Навигация документации">
+        <div class="bd-links-group">
+          <a class="bd-links-heading" href="#start">Начало работы</a>
+          <ul class="bd-links-list">
+            <li><a href="#start" class="active">Введение</a></li>
+            <li><a href="#connect">Подключение</a></li>
+            <li><a href="#footer">Липкий подвал</a></li>
+          </ul>
+        </div>
+
+        <div class="bd-links-group">
+          <a class="bd-links-heading" href="#grid">Макет</a>
+          <ul class="bd-links-list">
+            <li><a href="#grid">Сетка</a></li>
+            <li><a href="#order">Порядок колонок</a></li>
+            <li><a href="#spacing">Отступы</a></li>
+          </ul>
+        </div>
+
+        <div class="bd-links-group">
+          <a class="bd-links-heading" href="#images">Содержание</a>
+          <ul class="bd-links-list">
+            <li><a href="#images">Изображения</a></li>
+            <li><a href="#table">Таблицы</a></li>
+            <li><a href="#custom-css">Типографика</a></li>
+          </ul>
+        </div>
+
+        <div class="bd-links-group">
+          <a class="bd-links-heading" href="#forms">Формы</a>
+          <ul class="bd-links-list">
+            <li><a href="#forms">Форма заявки</a></li>
+            <li><a href="#mask">Маска телефона</a></li>
+            <li><a href="#toast">Toast</a></li>
+          </ul>
+        </div>
+
+        <div class="bd-links-group">
+          <a class="bd-links-heading" href="#navbar">Компоненты</a>
+          <ul class="bd-links-list">
+            <li><a href="#navbar">Navbar</a></li>
+            <li><a href="#dropdown">Dropdown</a></li>
+            <li><a href="#carousel">Carousel</a></li>
+            <li><a href="#cards">Cards</a></li>
+            <li><a href="#masonry">Masonry</a></li>
+          </ul>
+        </div>
+
+        <div class="bd-links-group">
+          <a class="bd-links-heading" href="#custom-css">Утилиты</a>
+          <ul class="bd-links-list">
+            <li><a href="#spacing">Spacing</a></li>
+            <li><a href="#custom-css">Hover</a></li>
+            <li><a href="#images">Sizing</a></li>
+          </ul>
+        </div>
+      </nav>
+    </aside>
+
+    <article class="bd-content">
+      <div class="bd-intro">
+        <h1 class="bd-title" id="content">Введение</h1>
+        <p class="bd-lead">Начните работу с Bootstrap и часто используемыми компонентами: адаптивная шапка, сетка, карусель, галерея, формы, уведомления и служебные классы.</p>
+      </div>
+
+      <section id="start">
+        <h2>Быстрый старт</h2>
+        <p>Для работы большинства компонентов нужен CSS Bootstrap и пакет JavaScript <code>bootstrap.bundle.min.js</code>. Его лучше подключать внизу страницы перед закрывающим тегом <code>&lt;/body&gt;</code>.</p>
+      </section>
+
+      <section id="connect">
+        <h3>CSS</h3>
+        <p>Скопируйте и вставьте таблицу стилей в <code>&lt;head&gt;</code> перед вашим <code>style.css</code>.</p>
+        <div class="highlight"><pre><code>&lt;link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"&gt;</code></pre></div>
+
+        <h3>JS</h3>
+        <p>Для dropdown, collapse, carousel, toast и burger menu нужен JavaScript.</p>
+        <div class="highlight"><pre><code>&lt;script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"&gt;&lt;/script&gt;</code></pre></div>
+      </section>
+
+      <section id="navbar">
+        <h2>Navbar</h2>
+        <p>Рабочая копия твоей шапки. Здесь исправлены частые ошибки: убран лишний <code>href</code>, убран пустой <code>&lt;li&gt;</code>, у dropdown есть <code>aria-labelledby</code>, а для Bootstrap 5 используется <code>data-bs-toggle="dropdown"</code>.</p>
+
+        <div class="highlight"><pre><code>&lt;nav class="navbar navbar-expand-md navbar-light bg-white border-bottom mb-4"&gt;
+  &lt;div class="container"&gt;
+
+    &lt;a class="navbar-brand" href="index.html"&gt;
+      &lt;img src="img/logo.png" alt="Логотип" style="width: 120px;"&gt;
+    &lt;/a&gt;
+
+    &lt;button class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#mainMenu"
+            aria-controls="mainMenu"
+            aria-expanded="false"
+            aria-label="Открыть меню"&gt;
+      &lt;span class="navbar-toggler-icon"&gt;&lt;/span&gt;
+    &lt;/button&gt;
+
+    &lt;div class="collapse navbar-collapse" id="mainMenu"&gt;
+      &lt;ul class="navbar-nav mx-auto mb-2 mb-md-0"&gt;
+
+        &lt;li class="nav-item"&gt;
+          &lt;a href="index.html" class="nav-link"&gt;Главная&lt;/a&gt;
+        &lt;/li&gt;
+
+        &lt;li class="nav-item"&gt;
+          &lt;a href="contacts.html" class="nav-link"&gt;Контакты&lt;/a&gt;
+        &lt;/li&gt;
+
+        &lt;li class="nav-item"&gt;
+          &lt;a href="blog.html" class="nav-link"&gt;Блог&lt;/a&gt;
+        &lt;/li&gt;
+
+        &lt;li class="nav-item"&gt;
+          &lt;a href="price-list.html" class="nav-link"&gt;Прайс-лист&lt;/a&gt;
+        &lt;/li&gt;
+
+        &lt;li class="nav-item"&gt;
+          &lt;a href="form.html" class="nav-link active"&gt;Оставить заявку&lt;/a&gt;
+        &lt;/li&gt;
+
+        &lt;li class="nav-item dropdown"&gt;
+          &lt;a href="#"
+             class="nav-link dropdown-toggle"
+             id="catalogDropdown"
+             role="button"
+             data-bs-toggle="dropdown"
+             aria-expanded="false"&gt;
+            Портфолио
+          &lt;/a&gt;
+
+          &lt;ul class="dropdown-menu" aria-labelledby="catalogDropdown"&gt;
+            &lt;li&gt;
+              &lt;a href="port1.html" class="dropdown-item"&gt;
+                портретная съемка
+              &lt;/a&gt;
+            &lt;/li&gt;
+
+            &lt;li&gt;
+              &lt;a href="port2.html" class="dropdown-item"&gt;
+                свадебные съемки
+              &lt;/a&gt;
+            &lt;/li&gt;
+
+            &lt;li&gt;
+              &lt;a href="port3.html" class="dropdown-item"&gt;
+                съемка для журналов
+              &lt;/a&gt;
+            &lt;/li&gt;
+
+            &lt;li&gt;
+              &lt;a href="port4.html" class="dropdown-item"&gt;
+                съемка событий
+              &lt;/a&gt;
+            &lt;/li&gt;
+          &lt;/ul&gt;
+        &lt;/li&gt;
+
+      &lt;/ul&gt;
+    &lt;/div&gt;
+
+  &lt;/div&gt;
+&lt;/nav&gt;</code></pre></div>
+
+        <h3>Обязательное подключение JS</h3>
+        <p>Если dropdown или бургер не открывается, почти всегда не подключен <code>bootstrap.bundle.min.js</code> или подключен не той версии.</p>
+        <div class="highlight"><pre><code>&lt;script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"&gt;&lt;/script&gt;</code></pre></div>
+      </section>
+
+      <section id="dropdown">
+        <h2>Dropdown</h2>
+        <p>В Bootstrap 5 используется <code>data-bs-toggle</code>. Старый вариант <code>data-toggle</code> относится к Bootstrap 4.</p>
+        <div class="highlight"><pre><code>&lt;li class="nav-item dropdown"&gt;
+  &lt;a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"&gt;
+    Портфолио
+  &lt;/a&gt;
+
+  &lt;ul class="dropdown-menu"&gt;
+    &lt;li&gt;&lt;a class="dropdown-item" href="port1.html"&gt;Портретная съемка&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a class="dropdown-item" href="port2.html"&gt;Свадебные съемки&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/li&gt;</code></pre></div>
+      </section>
+
+      <section id="grid">
+        <h2>Сетка</h2>
+        <p>Основная схема Bootstrap-сетки: <code>container → row → col</code>.</p>
+        <div class="highlight"><pre><code>&lt;div class="container"&gt;
+  &lt;div class="row g-3"&gt;
+    &lt;div class="col-12 col-md-6 col-lg-4"&gt;Блок&lt;/div&gt;
+    &lt;div class="col-12 col-md-6 col-lg-4"&gt;Блок&lt;/div&gt;
+    &lt;div class="col-12 col-md-6 col-lg-4"&gt;Блок&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre></div>
+      </section>
+
+      <section id="order">
+        <h2>Порядок колонок</h2>
+        <p>Классы <code>order-*</code> позволяют менять порядок блоков на разных экранах.</p>
+        <div class="highlight"><pre><code>&lt;div class="row align-items-center"&gt;
+  &lt;div class="col-12 col-md-6 order-2 order-md-1"&gt;
+    Текст
+  &lt;/div&gt;
+
+  &lt;div class="col-12 col-md-6 order-1 order-md-2"&gt;
+    Картинка
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre></div>
+      </section>
+
+      <section id="spacing">
+        <h2>Spacing</h2>
+        <p><code>m</code> — внешний отступ, <code>p</code> — внутренний. <code>x</code> — слева и справа, <code>y</code> — сверху и снизу.</p>
+        <div class="highlight"><pre><code>mt-3       /* margin-top */
+mb-4       /* margin-bottom */
+mx-auto    /* margin-left/right auto */
+px-3       /* padding-left/right */
+py-5       /* padding-top/bottom */
+mx-2 mx-md-5</code></pre></div>
+      </section>
+
+      <section id="carousel">
+        <h2>Carousel</h2>
+        <p>Полный код карусели на 3 фотографии. Если будешь расширять до 9 фото, добавляй новые <code>button</code> в индикаторы и новые <code>carousel-item</code> строго внутрь <code>carousel-inner</code>.</p>
+
+        <div class="bd-example">
+          <div id="demoCarousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner rounded shadow-sm">
+              <div class="carousel-item active">
+                <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1200&q=80" class="d-block w-100" style="height: 300px; object-fit: cover;" alt="">
+              </div>
+              <div class="carousel-item">
+                <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=1200&q=80" class="d-block w-100" style="height: 300px; object-fit: cover;" alt="">
+              </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#demoCarousel" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon"></span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#demoCarousel" data-bs-slide="next">
+              <span class="carousel-control-next-icon"></span>
+            </button>
+          </div>
+        </div>
+
+        <div class="highlight"><pre><code>&lt;div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel"&gt;
+
+  &lt;div class="carousel-indicators"&gt;
+    &lt;button type="button"
+            data-bs-target="#carouselExampleIndicators"
+            data-bs-slide-to="0"
+            class="active"
+            aria-current="true"
+            aria-label="Slide 1"&gt;&lt;/button&gt;
+
+    &lt;button type="button"
+            data-bs-target="#carouselExampleIndicators"
+            data-bs-slide-to="1"
+            aria-label="Slide 2"&gt;&lt;/button&gt;
+
+    &lt;button type="button"
+            data-bs-target="#carouselExampleIndicators"
+            data-bs-slide-to="2"
+            aria-label="Slide 3"&gt;&lt;/button&gt;
+  &lt;/div&gt;
+
+  &lt;div class="carousel-inner"&gt;
+    &lt;div class="carousel-item active"&gt;
+      &lt;img src="img/carousel/1.jpg" class="d-block w-100" alt="Фото 1"&gt;
+    &lt;/div&gt;
+
+    &lt;div class="carousel-item"&gt;
+      &lt;img src="img/carousel/2.jpg" class="d-block w-100" alt="Фото 2"&gt;
+    &lt;/div&gt;
+
+    &lt;div class="carousel-item"&gt;
+      &lt;img src="img/carousel/3.jpg" class="d-block w-100" alt="Фото 3"&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;button class="carousel-control-prev"
+          type="button"
+          data-bs-target="#carouselExampleIndicators"
+          data-bs-slide="prev"&gt;
+    &lt;span class="carousel-control-prev-icon" aria-hidden="true"&gt;&lt;/span&gt;
+    &lt;span class="visually-hidden"&gt;Previous&lt;/span&gt;
+  &lt;/button&gt;
+
+  &lt;button class="carousel-control-next"
+          type="button"
+          data-bs-target="#carouselExampleIndicators"
+          data-bs-slide="next"&gt;
+    &lt;span class="carousel-control-next-icon" aria-hidden="true"&gt;&lt;/span&gt;
+    &lt;span class="visually-hidden"&gt;Next&lt;/span&gt;
+  &lt;/button&gt;
+
+&lt;/div&gt;</code></pre></div>
+
+        <h3>CSS для одинаковой высоты изображений</h3>
+        <div class="highlight"><pre><code>.carousel img {
+  height: 800px;
+  object-fit: cover;
+}</code></pre></div>
+      </section>
+
+      <section id="images">
+        <h2>Изображения</h2>
+        <p><code>img-fluid</code> делает изображение адаптивным. Для фиксированной формы используйте <code>aspect-ratio</code> и <code>object-fit: cover</code>.</p>
+        <div class="highlight"><pre><code>&lt;img src="img/photo.jpg" class="img-fluid w-100 rounded shadow"
+     style="aspect-ratio:16/9; object-fit:cover;"&gt;</code></pre></div>
+      </section>
+
+      <section id="masonry">
+        <h2>Masonry</h2>
+        <p>Для простой галереи можно использовать CSS columns. Для полноценной раскладки — Masonry JS.</p>
+        <div class="highlight"><pre><code>.masonry {
+  columns: 3;
+  column-gap: 10px;
+}
+
+.masonry img {
+  width: 100%;
+  margin-bottom: 10px;
+  break-inside: avoid;
+}</code></pre></div>
+
+        <div class="highlight"><pre><code>&lt;script src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js"&gt;&lt;/script&gt;
+
+&lt;script&gt;
+window.addEventListener('load', function () {
+  const grid = document.querySelector('#photo');
+
+  new Masonry(grid, {
+    itemSelector: '.col-12',
+    percentPosition: true
+  });
+});
+&lt;/script&gt;</code></pre></div>
+      </section>
+
+      <section id="cards">
+        <h2>Cards</h2>
+        <p>Для карточек не задавайте фиксированную ширину <code>width: 18rem</code>, если карточка стоит внутри Bootstrap-сетки.</p>
+        <div class="highlight"><pre><code>&lt;div class="row g-3"&gt;
+  &lt;div class="col-12 col-sm-6 col-lg-4"&gt;
+    &lt;div class="card h-100 shadow-sm"&gt;
+      &lt;img src="img/photo.jpg" class="card-img-top"&gt;
+      &lt;div class="card-body d-flex flex-column"&gt;
+        &lt;h5 class="card-title"&gt;Заголовок&lt;/h5&gt;
+        &lt;p class="card-text"&gt;Описание...&lt;/p&gt;
+        &lt;a href="#" class="btn btn-dark w-100 mt-auto"&gt;Подробнее&lt;/a&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre></div>
+      </section>
+
+      <section id="table">
+        <h2>Таблицы</h2>
+        <p>Чтобы таблица имела скругление, заверните ее в блок с <code>rounded</code> и <code>overflow-hidden</code>.</p>
+        <div class="highlight"><pre><code>&lt;div class="shadow rounded overflow-hidden"&gt;
+  &lt;table class="table table-bordered mb-0"&gt;
+    ...
+  &lt;/table&gt;
+&lt;/div&gt;</code></pre></div>
+      </section>
+
+      <section id="forms">
+        <h2>Формы</h2>
+        <p>Ширину формы лучше задавать через колонку, а не через <code>w-50</code> на <code>row</code>.</p>
+        <div class="highlight"><pre><code>&lt;div class="row justify-content-center"&gt;
+  &lt;div class="col-12 col-md-8 col-lg-6"&gt;
+    &lt;form&gt;
+      &lt;label for="Phone" class="form-label mt-3"&gt;Номер телефона&lt;/label&gt;
+      &lt;input type="tel" class="form-control" id="Phone"&gt;
+
+      &lt;label for="Name" class="form-label mt-3"&gt;Ваше имя&lt;/label&gt;
+      &lt;input type="text" class="form-control" id="Name"&gt;
+
+      &lt;button type="button" class="btn btn-dark btn-lg w-100 mt-3" onclick="validateForm()"&gt;
+        Отправить
+      &lt;/button&gt;
+    &lt;/form&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre></div>
+      </section>
+
+      <section id="mask">
+        <h2>Маска телефона</h2>
+        <p><code>pattern</code> проверяет формат, но не расставляет пробелы. Для автоматического форматирования нужна библиотека.</p>
+        <div class="highlight"><pre><code>&lt;script src="https://unpkg.com/imask"&gt;&lt;/script&gt;
+
+&lt;script&gt;
+IMask(document.getElementById('Phone'), {
+  mask: '+{7} (000) 000-00-00'
+});
+&lt;/script&gt;</code></pre></div>
+      </section>
+
+      <section id="toast">
+        <h2>Toasts</h2>
+        <p>Полный рабочий вариант: HTML-разметка toast, кнопка и JavaScript-функция. Toast должен быть на странице до подключения <code>script.js</code>, а Bootstrap JS должен быть подключен раньше твоего скрипта.</p>
+
+        <div class="bd-example">
+          <button class="btn btn-dark" onclick="showDemoToast()">Показать toast</button>
+        </div>
+
+        <h3>HTML</h3>
+        <div class="highlight"><pre><code>&lt;button type="button"
+        class="btn btn-dark btn-lg mt-3 w-100"
+        onclick="validateForm()"&gt;
+  Отправить
+&lt;/button&gt;
+
+&lt;div class="toast-container position-fixed bottom-0 end-0 p-3" style="z-index: 9999"&gt;
+  &lt;div id="successToast"
+       class="toast"
+       role="alert"
+       aria-live="assertive"
+       aria-atomic="true"
+       data-bs-delay="5000"&gt;
+
+    &lt;div class="toast-header"&gt;
+      &lt;strong class="me-auto"&gt;Заявка&lt;/strong&gt;
+      &lt;small&gt;сейчас&lt;/small&gt;
+      &lt;button type="button"
+              class="btn-close"
+              data-bs-dismiss="toast"
+              aria-label="Close"&gt;&lt;/button&gt;
+    &lt;/div&gt;
+
+    &lt;div class="toast-body"&gt;
+      Заявка успешно отправлена!
+    &lt;/div&gt;
+
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre></div>
+
+        <h3>JS</h3>
+        <div class="highlight"><pre><code>function validateForm() {
+  const name = document.getElementById("Name").value.trim();
+  const phone = document.getElementById("Phone").value.trim();
+
+  if (name !== "" && phone !== "") {
+    const toastEl = document.getElementById("successToast");
+    const toast = bootstrap.Toast.getOrCreateInstance(toastEl);
+
+    toast.show();
+  } else {
+    alert("Пожалуйста, заполните все поля формы.");
+  }
+}</code></pre></div>
+
+        <h3>Подключение скриптов</h3>
+        <div class="highlight"><pre><code>&lt;script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"&gt;&lt;/script&gt;
+&lt;script src="script.js"&gt;&lt;/script&gt;</code></pre></div>
+      </section>
+
+      <section id="footer">
+        <h2>Липкий подвал</h2>
+        <p>Подвал должен быть прямым элементом <code>body</code>, а основная часть страницы должна растягиваться.</p>
+        <div class="highlight"><pre><code>&lt;body class="d-flex flex-column min-vh-100"&gt;
+
+  &lt;main class="flex-grow-1"&gt;
+    Контент
+  &lt;/main&gt;
+
+  &lt;footer class="mt-auto"&gt;
+    Подвал
+  &lt;/footer&gt;
+
+&lt;/body&gt;</code></pre></div>
+      </section>
+
+      <section id="custom-css">
+        <h2>Полезные мелочи</h2>
+
+        <h3>Цвет active/focus/active у dropdown</h3>
+        <div class="highlight"><pre><code>.dropdown-item.active,
+.dropdown-item:focus,
+.dropdown-item:active {
+  background-color: black !important;
+  color: white !important;
+}</code></pre></div>
+
+        <h3>Тень</h3>
+        <p>Можно использовать готовые классы Bootstrap: <code>shadow-sm</code>, <code>shadow</code>, <code>shadow-lg</code>. Если нужна своя тень:</p>
+        <div class="highlight"><pre><code>.my-shadow {
+  box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
+}</code></pre></div>
+
+        <h3>break-inside: avoid</h3>
+        <p>Используется в masonry/columns, чтобы карточка или картинка не разрывалась между колонками.</p>
+        <div class="highlight"><pre><code>.masonry img,
+.masonry .card {
+  break-inside: avoid;
+}</code></pre></div>
+
+        <h3>Затемнение картинки при наведении</h3>
+        <div class="highlight"><pre><code>#photo img {
+  transition: .3s;
+}
+
+#photo img:hover {
+  transform: scale(1.02);
+  filter: brightness(70%);
+}</code></pre></div>
+
+        <h3>line-height: 1.5 в Bootstrap</h3>
+        <div class="highlight"><pre><code>&lt;p class="lh-base"&gt;
+  Текст с line-height: 1.5;
+&lt;/p&gt;</code></pre></div>
+      </section>
+    </article>
+
+    <aside class="bd-toc">
+      <strong>Содержание</strong>
+      <nav>
+        <a href="#start">Быстрый старт</a>
+        <a href="#connect">CSS</a>
+        <a href="#connect">JS</a>
+        <a href="#navbar">Navbar</a>
+        <a href="#dropdown">Dropdown</a>
+        <a href="#grid">Сетка</a>
+        <a href="#carousel">Carousel</a>
+        <a href="#images">Изображения</a>
+        <a href="#masonry">Masonry</a>
+        <a href="#forms">Формы</a>
+        <a href="#toast">Toasts</a>
+      </nav>
+    </aside>
+  </div>
+</main>
+
+<div class="toast-container position-fixed bottom-0 end-0 p-3" style="z-index: 9999">
+  <div id="successToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-header">
+      <strong class="me-auto">Bootstrap</strong>
+      <small>сейчас</small>
+      <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Закрыть"></button>
+    </div>
+    <div class="toast-body">
+      Компонент Toast работает.
+    </div>
+  </div>
+</div>
+
+<footer class="bd-footer p-3 p-md-5 mt-auto text-center text-sm-start">
+  <div class="container">
+    <ul class="list-unstyled d-flex flex-wrap gap-3 mb-3">
+      <li><a href="#navbar" class="text-decoration-none">Navbar</a></li>
+      <li><a href="#carousel" class="text-decoration-none">Carousel</a></li>
+      <li><a href="#forms" class="text-decoration-none">Forms</a></li>
+      <li><a href="#toast" class="text-decoration-none">Toasts</a></li>
+    </ul>
+    <p class="mb-0">Разделы собраны для быстрого повторения Bootstrap 5 и типовых решений верстки.</p>
+    <p class="mb-0">© 2017-2020 Boykov.</p>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  function showDemoToast() {
+    const toastEl = document.getElementById('successToast');
+    const toast = bootstrap.Toast.getOrCreateInstance(toastEl);
+    toast.show();
+  }
+</script>
+</body>
+</html>
